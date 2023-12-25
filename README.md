@@ -4,7 +4,7 @@ The micro-service is for tracking and monitoring the spending amount at the GCP 
 ## Architecture
 
 ![_                                          Expected architecture for the Alert service](https://github.com/Sachinbisht27/gcp-budget-alerts-service/assets/96137915/86e87e12-824a-46a9-ba95-07edca694285)
- _Architecture for the Alert Service_
+<h6 align="center">Architecture for the Alert Service</h6>
 
 
 ## Installation Guideline
