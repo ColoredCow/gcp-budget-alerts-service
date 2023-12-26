@@ -2,7 +2,7 @@
 
 # Steps to create an app on Slack
 
-1. Got to the channel on which you want to install the app
+1. Go to the channel on which you want to install the app
 2. Go to the view all members icon on the top right of the channel
     
 ![image](https://github.com/Sachinbisht27/gcp-budget-alerts-service/assets/96137915/13cc0d92-076e-4fd5-b985-fb5102efac79)
