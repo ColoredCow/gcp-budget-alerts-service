@@ -12,7 +12,7 @@ The micro-service is for tracking and monitoring the spending amount at the GCP 
 ### Prerequisite
 1. pyenv
 2. python 3.8
-3. A Slack App for delivering messages on the channel.
+3. A Slack App for delivering messages on the channel. [Setup Guideline](./SLACKAPP.md)
 
 ### Steps
 1. Clone the repository
