@@ -22,5 +22,6 @@ def handle(payload, context):
 
     except Exception as e:
         logger.error(f"Error in main function: {e}")
+        logger.error(f"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Testing codacy CI check xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
         return {"message": "Something went wrong!"}, 400
     return {"message": "Success"}, 200
