@@ -5,7 +5,9 @@ on:
     types:
       - opened
       - synchronize
+
 permissions: write-all
+
 jobs:
   review:
     runs-on: ubuntu-latest
@@ -13,10 +15,33 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3
 
-      - name: AI Code Reviewer
+      - name: AI Code Review
+        id: ai-review
         uses: freeedcom/ai-codereviewer@v2.7.0
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_API_MODEL: "gpt-4"
           exclude: "**/*.json, **/*.md"
+
+      - name: Check for Failures
+        id: check-failures
+        run: echo ::set-output name=failures::$(echo "${{ steps.ai-review.outputs.review_result }}" | jq -r '.failures')
+
+      - name: Add Comment on Failure
+        if: steps.check-failures.outputs.failures != null
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const failures = JSON.parse('${{ steps.check-failures.outputs.failures }}');
+            const issueBody = "### AI Code Review Failures\n\n";
+            failures.forEach(failure => {
+              issueBody += `- ${failure}\n`;
+            });
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: issueBody
+            });
