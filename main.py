@@ -35,5 +35,8 @@ def handle(payload, context):
 
     except Exception as e:
         logger.error("Error in main function: %s", e)
+        logger.error(
+            f"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Testing CI Checks Fialure in AI code review workflow xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        )
         return {"message": "Something went wrong!"}, 400
     return {"message": "Success"}, 200
