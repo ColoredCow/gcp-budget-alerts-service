@@ -1,7 +1,9 @@
-import config
-import slack
-from utils import logger
 from ssl import SSLContext
+
+import slack
+
+import config
+from utils import logger
 
 
 class SlackService:

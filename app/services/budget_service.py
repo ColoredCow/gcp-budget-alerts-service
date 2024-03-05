@@ -1,23 +1,24 @@
-import config
 import datetime
+
 from google.cloud import bigquery
 
-
+import config
+from app.helpers import bigquery_helper, notification_helper
 from app.services import templates
-from app.helpers import bigquery_helper
-from app.helpers import notification_helper
 from app.services.queries import budget_table
-
 
 client = bigquery.Client()
 
 
 class BudgetService:
+    """Handles budget-related operations."""
+
     def __init__(self):
         self.dataset_id = config.DATASET_ID
         self.table_id = config.ALERT_THRESHOLD_TABLE_ID
 
     def handle(self, alert_attrs, alert_data):
+        """Handles budget alerts."""
         threshold = float(alert_data.get("alertThresholdExceeded")) * 100
         if not self.is_new_threshold_greater(threshold):
             return
@@ -30,10 +31,7 @@ class BudgetService:
         current_year_month = datetime.datetime.utcnow().strftime("%Y-%m")
         year_month_of_budget_interval = interval.strftime("%Y-%m")
 
-        # Check if the alert is for the previous month
         if year_month_of_budget_interval != current_year_month:
-            ## The pub/sub is sending us alerts for the previous month on the first day of the new month.
-            ## To handle this condition, we compare the Month-Year of the budget alert interval with the current Month-Year.
             return
 
         billing_id = alert_attrs.get("billingAccountId")
@@ -47,10 +45,11 @@ class BudgetService:
 
         notify = notification_helper.notify(slack_block)
 
-        if notify == True:
+        if notify is True:
             self.insert_new_threshold(cost, budget, budget_name, threshold)
 
     def is_new_threshold_greater(self, threshold):
+        """Checks if the new threshold is greater."""
         query_to_get_existing_threshold = budget_table.get_existing_threshold_query(
             client, self.dataset_id, self.table_id
         )
@@ -60,6 +59,7 @@ class BudgetService:
         return last_existing_threshold is None or threshold > last_existing_threshold
 
     def insert_new_threshold(self, cost, budget, budget_name, threshold):
+        """Inserts a new threshold into the database."""
         query_to_insert_threshold = budget_table.get_insert_threshold_query(
             client, self.dataset_id, self.table_id, cost, budget, budget_name, threshold
         )

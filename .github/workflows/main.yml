@@ -6,8 +6,6 @@ on:
       - opened
       - synchronize
 
-permissions: write-all
-
 jobs:
   review:
     runs-on: ubuntu-latest
@@ -24,17 +22,16 @@ jobs:
           OPENAI_API_MODEL: "gpt-4"
           exclude: "**/*.json, **/*.md"
 
-      - name: Check for Failures
-        id: check-failures
-        run: echo ::set-output name=failures::$(echo "${{ steps.ai-review.outputs.review_result }}" | jq -r '.failures')
+      - name: Set Failures Output
+        run: echo "failures=${{ steps.ai-review.outputs.review_result }}" | jq -r '.failures' >> $GITHUB_ENV
 
       - name: Add Comment on Failure
-        if: steps.check-failures.outputs.failures != null
+        if: ${{ steps.ai-review.outputs.review_result != '{}' }}
         uses: actions/github-script@v4
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const failures = JSON.parse('${{ steps.check-failures.outputs.failures }}');
+            const failures = JSON.parse(process.env.failures);
             const issueBody = "### AI Code Review Failures\n\n";
             failures.forEach(failure => {
               issueBody += `- ${failure}\n`;
