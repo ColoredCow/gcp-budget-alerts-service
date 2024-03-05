@@ -17,9 +17,6 @@ def handle(payload, context):
     Args:
         payload (dict): Payload containing alert attributes and data.
         context (dict): Context information.
-
-    Returns:
-        dict: Response message and status code.
     """
     try:
         alert_attrs = payload.get("attributes")
