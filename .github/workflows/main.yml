@@ -23,7 +23,7 @@ jobs:
           exclude: "**/*.json, **/*.md"
 
       - name: Set Failures Output
-        run: echo "failures=${{ steps.ai-review.outputs.review_result }}" | jq -r '.failures' >> $GITHUB_ENV
+        run: echo "failures=${{ steps.ai-review.outputs.review_result }}" | jq -r '.failures' >> "$GITHUB_ENV"
 
       - name: Add Comment on Failure
         if: ${{ steps.ai-review.outputs.review_result != '{}' }}

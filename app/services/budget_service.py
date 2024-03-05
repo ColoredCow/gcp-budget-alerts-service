@@ -1,11 +1,11 @@
 import datetime
 
 from google.cloud import bigquery
+from services import templates
+from services.queries import budget_table
 
 import config
 from app.helpers import bigquery_helper, notification_helper
-from app.services import templates
-from app.services.queries import budget_table
 
 client = bigquery.Client()
 
