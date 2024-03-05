@@ -34,9 +34,6 @@ def handle(payload, context):
         budget_service.handle(alert_attrs, alert_data)
 
     except Exception as e:
-        logger.error("Error in main function: %s", e)
-        logger.error(
-            f"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Testing CI Checks Fialure in AI code review workflow xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-        )
+        logger.error("Error while handling the payload for billing alert: %s", e)
         return {"message": "Something went wrong!"}, 400
     return {"message": "Success"}, 200
