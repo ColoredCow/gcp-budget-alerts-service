@@ -51,6 +51,9 @@ class BudgetService:
         )
         return interval.strftime("%Y-%m-%d %H:%M")
 
+        if notify:
+            self.insert_new_threshold(cost, budget, budget_name, threshold)
+
     def _is_current_month(self, interval_str):
         """Checks if the interval falls within the current month."""
         current_year_month = datetime.datetime.utcnow().strftime("%Y-%m")

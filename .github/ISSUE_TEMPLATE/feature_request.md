@@ -1,9 +1,9 @@
 ---
 name: Feature request
 about: Suggest an idea for this project
-title: ''
-labels: ''
-assignees: ''
+title: "[FEATURE] "
+labels: enhancement
+assignees: Sachinbisht27
 
 ---
 
@@ -18,3 +18,9 @@ A clear and concise description of any alternative solutions or features you've 
 
 **Additional context**
 Add any other context or screenshots about the feature request here.
+
+**Acceptance Criteria**
+Add acceptance criteria here.
+
+**Documentation**
+Add whatever documentation will be required here.
