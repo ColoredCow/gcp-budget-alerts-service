@@ -4,6 +4,7 @@ ENVIRONMENT = os.environ.get("ENVIRONMENT", "development")
 
 if ENVIRONMENT == "development":
     from os import path
+
     from dotenv import load_dotenv
 
     basedir = path.abspath(path.dirname(__file__))

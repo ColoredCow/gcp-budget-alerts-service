@@ -1,6 +1,8 @@
 import logging
-import config
+
 from google.cloud import logging as gcloud_logging
+
+import config
 
 logger = logging.getLogger()
 logging.basicConfig(level=logging.DEBUG)

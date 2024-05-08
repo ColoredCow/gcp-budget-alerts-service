@@ -1,7 +1,9 @@
-import config
-import slack
-from utils import logger
 from ssl import SSLContext
+
+import slack
+
+import config
+from utils import logger
 
 
 class SlackService:
@@ -16,11 +18,11 @@ class SlackService:
 
     def send_alert(self, slack_block):
         try:
-            response = self.slack_client.chat_postMessage(
+            self.slack_client.chat_postMessage(
                 channel=self.channel_name,
                 blocks=slack_block["blocks"],
             )
-            logger.info(f"Alert Sent")
+            logger.info("Alert Sent")
             return True
         except Exception as e:
             logger.error(f"Exception occurred:{e}")
