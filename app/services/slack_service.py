@@ -20,8 +20,8 @@ class SlackService:
                 channel=self.channel_name,
                 blocks=slack_block["blocks"],
             )
-            logger.info(f"Alert Sent")
+            logger.info("Alert Sent")
             return True
         except Exception as e:
-            logger.error(f"Exception occurred:{e}")
+            logger.error(f"Exception occurred:{e}. Response: {response}")
             return False

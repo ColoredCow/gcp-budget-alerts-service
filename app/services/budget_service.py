@@ -32,8 +32,8 @@ class BudgetService:
 
         # Check if the alert is for the previous month
         if year_month_of_budget_interval != current_year_month:
-            ## The pub/sub is sending us alerts for the previous month on the first day of the new month.
-            ## To handle this condition, we compare the Month-Year of the budget alert interval with the current Month-Year.
+            # The pub/sub is sending us alerts for the previous month on the first day of the new month.
+            # To handle this condition, we compare the Month-Year of the budget alert interval with the current Month-Year.
             return
 
         billing_id = alert_attrs.get("billingAccountId")
@@ -47,7 +47,7 @@ class BudgetService:
 
         notify = notification_helper.notify(slack_block)
 
-        if notify == True:
+        if notify:
             self.insert_new_threshold(cost, budget, budget_name, threshold)
 
     def is_new_threshold_greater(self, threshold):
