@@ -1,3 +1,9 @@
+"""
+Notification Helper Module
+
+This module provides functions for sending notifications.
+"""
+
 from app import services
 
 

@@ -1,5 +1,9 @@
-slackclient==2.9.4
 functions-framework==3.2.0
 google-cloud-logging==3.5.0
 google_cloud_bigquery==3.11.4
+Werkzeug==3.0.3
+pre-commit==3.6.2
+slackclient==2.9.4
 Werkzeug==2.3.7
+aiohttp>=3.9.4
+gunicorn>=22.0.0
