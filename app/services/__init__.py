@@ -1,2 +1,2 @@
-from .slack_service import *
 from .budget_service import *
+from .slack_service import *
