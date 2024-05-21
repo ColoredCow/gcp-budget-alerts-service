@@ -18,7 +18,7 @@ class SlackService:
 
     def send_alert(self, slack_block):
         try:
-            self.slack_client.chat_postMessage(
+            response = self.slack_client.chat_postMessage(
                 channel=self.channel_name,
                 blocks=slack_block["blocks"],
             )

@@ -1,5 +1,4 @@
-"""
-Notification Helper Module
+"""Notification Helper Module.
 
 This module provides functions for sending notifications.
 """

@@ -1,9 +1,9 @@
+aiohttp>=3.9.4
 functions-framework==3.2.0
 google-cloud-logging==3.5.0
 google_cloud_bigquery==3.11.4
-werkzeug>=3.0.3
-aiohttp>=3.9.4
 gunicorn>=22.0.0
 pre-commit==2.20.0
 python-dotenv==0.20.0
 slackclient==2.9.4
+werkzeug>=3.0.3
