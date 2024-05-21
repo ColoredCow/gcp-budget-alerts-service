@@ -6,4 +6,3 @@ gunicorn>=22.0.0
 pre-commit==3.6.2
 slackclient==2.9.4
 Werkzeug==3.0.3
-Werkzeug==2.3.7
