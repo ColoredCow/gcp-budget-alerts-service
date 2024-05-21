@@ -20,11 +20,11 @@ The microservice is for tracking and monitoring the spending amount at the GCP s
 
 1. Clone the repository
    ```sh
-   git clone https://github.com/Sachinbisht27/gcp-budget-alerts-service.git
+   git clone https://github.com/ColoredCow/gcp-budget-alerts-service.git
    ```
 2. Switch to project folder and setup the vertual environment
    ```sh
-   cd gcp-alerts
+   cd gcp-budget-alerts-service
    python -m venv venv
    ```
 3. Activate the virtual environment

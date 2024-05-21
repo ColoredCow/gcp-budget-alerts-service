@@ -11,8 +11,7 @@ from utils import logger
 
 
 def handle(payload, context):
-    """
-    Function to handle billing alerts.
+    """Function to handle billing alerts.
 
     Args:
         payload (dict): Payload containing alert attributes and data.
